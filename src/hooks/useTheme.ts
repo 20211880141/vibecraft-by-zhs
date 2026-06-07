@@ -16,12 +16,11 @@ function getInitialTheme(): Theme {
 }
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const initial = getInitialTheme();
-    setTheme(initial);
     document.documentElement.classList.toggle('dark', initial === 'dark');
     setMounted(true);
   }, []);

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import type { GithubSearchUserItem } from '@/types/github';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
@@ -41,9 +42,11 @@ export function UserSearchResults({
             className="w-full text-left animate-fade-in-up"
           >
             <Card hover className="flex items-center gap-4 p-4">
-              <img
+              <Image
                 src={user.avatar_url}
                 alt={user.login}
+                width={48}
+                height={48}
                 className="h-12 w-12 rounded-xl"
               />
               <div className="min-w-0 flex-1">

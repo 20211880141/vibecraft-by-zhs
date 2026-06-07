@@ -3,7 +3,7 @@ import { addSearchHistory, clearSearchHistory } from '@/lib/idb';
 
 // Mock idb-keyval
 vi.mock('idb-keyval', () => {
-  let store: Record<string, unknown> = {};
+  const store: Record<string, unknown> = {};
   return {
     get: vi.fn(async (key: string) => store[key] ?? null),
     set: vi.fn(async (key: string, value: unknown) => {
