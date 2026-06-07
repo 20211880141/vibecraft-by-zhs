@@ -26,7 +26,6 @@ import { useGithubTrending } from '@/hooks/useGithubTrending';
 import { useSearchHistory } from '@/hooks/useSearchHistory';
 import type { SearchMode } from '@/types/github';
 import {
-  SEARCH_MODE_LABELS,
   SEARCH_MODE_PLACEHOLDERS,
   SEARCH_MODE_HINTS,
 } from '@/types/github';

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { GithubProfile } from '@/types/github';
 import { Card } from './ui/Card';
 
@@ -15,9 +16,11 @@ export function ProfileCard({ profile }: ProfileCardProps) {
     <Card className="mt-8 overflow-hidden">
       <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
         <div className="relative">
-          <img
+          <Image
             src={profile.avatar_url}
             alt={`${profile.login}'s avatar`}
+            width={96}
+            height={96}
             className="h-24 w-24 rounded-2xl border-2 border-emerald-400/30 object-cover shadow-lg"
           />
           <div className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-bold text-white shadow-md">

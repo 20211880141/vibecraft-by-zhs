@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import type { GithubSearchUserItem } from '@/types/github';
 import { Card } from './ui/Card';
 
@@ -40,9 +41,11 @@ export function OrgSearchResults({
             className="block animate-fade-in-up"
           >
             <Card hover className="flex items-center gap-4 p-4">
-              <img
+              <Image
                 src={org.avatar_url}
                 alt={org.login}
+                width={56}
+                height={56}
                 className="h-14 w-14 rounded-xl"
               />
               <div className="min-w-0 flex-1">

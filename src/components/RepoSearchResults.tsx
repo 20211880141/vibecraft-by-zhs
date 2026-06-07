@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import type { GithubSearchRepoItem } from '@/types/github';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
@@ -71,9 +72,11 @@ export function RepoSearchResults({
                   </div>
                 </div>
                 {repo.owner && (
-                  <img
+                  <Image
                     src={repo.owner.avatar_url}
                     alt={repo.owner.login}
+                    width={36}
+                    height={36}
                     className="h-9 w-9 flex-shrink-0 rounded-lg"
                   />
                 )}
