@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useSyncExternalStore } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -17,19 +17,23 @@ function getInitialTheme(): Theme {
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
-  const [mounted, setMounted] = useState(false);
 
+  // Detect client-side mount without calling setState in an effect
+  const mounted = useSyncExternalStore(
+    () => () => {}, // no-op subscribe – no external store to watch
+    () => true,     // client snapshot
+    () => false,    // server snapshot
+  );
+
+  // Sync theme class to DOM on mount and when theme changes
   useEffect(() => {
-    const initial = getInitialTheme();
-    document.documentElement.classList.toggle('dark', initial === 'dark');
-    setMounted(true);
-  }, []);
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
       const next = prev === 'light' ? 'dark' : 'light';
       localStorage.setItem(STORAGE_KEY, next);
-      document.documentElement.classList.toggle('dark', next === 'dark');
       return next;
     });
   }, []);
