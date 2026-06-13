@@ -1,0 +1,14 @@
+# dependencies
+server/node_modules/
+client/node_modules/
+
+# uploads
+server/uploads/
+
+# database
+server/chat.db
+server/chat.db-wal
+server/chat.db-shm
+
+# build output
+client/dist/
